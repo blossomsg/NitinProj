@@ -3,7 +3,8 @@ import sys
 
 
 def create_structure(path):
-    """ It will create a proj structure when provided path of a folder
+    """ It will create a proj structure when provided path of a folder.
+    This is a command line module
 
     Args:
         path: ["D:\\All_Projs\\TestProjForGit\\test_folder\\"]
