@@ -7,7 +7,8 @@ def create_structure(path):
     Args:
         path: ["D:\\All_Projs\\TestProjForGit\\test_folder\\"]
 
-    Returns:
+    Returns: ["Assetbuildpubs", "References", "Shotdev", "Shotpubs"]
+    path/Prod/<with_the_folder_names_from_the_above_mentioned_list>
 
     """
     # CAVEAT : Kindly give the dir path
