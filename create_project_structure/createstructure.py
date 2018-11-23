@@ -12,7 +12,7 @@ def create_structure(path):
 
     """
     # CAVEAT : Kindly give the dir path
-    proj_dir = [path]
+    proj_dir = path
 
     # CAVEAT : Project path lists
     proj_folder = ["Prod"]
@@ -32,10 +32,10 @@ def create_structure(path):
         os.mkdir(hierarchy_paths)
 
     # CAVEAT : Returning sub-folder paths list
-    return proj_dir_asset_path
+    # return proj_dir_asset_path
 
 
 if __name__ == '__main__':
     print "This is my main function"
-
+    create_structure(sys.argv[1:])
 # HOWTO : create_structure("D:\\All_Projs\\TestProjForGit\\test_folder\\")
