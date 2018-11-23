@@ -6,6 +6,12 @@ def create_structure(path):
     """ It will create a proj structure when provided path of a folder.
     This is a command line module
 
+    how to run in command line if not set in env var
+    1]cd\
+    2]<enter drive name where you have saved the script>:  (d:)
+    3]cd <enter path where you have saved the script>
+    4]python create_structure.py <arg: path for where you want to create the structures>
+
     Args:
         path: ["D:\\All_Projs\\TestProjForGit\\test_folder\\"]
 
@@ -13,6 +19,8 @@ def create_structure(path):
     path/Prod/<with_the_folder_names_from_the_above_mentioned_list>
 
     """
+
+    # ALERT : Check how to add the directory to environment var so directly calling the file with python creates the folders
     # CAVEAT : Kindly give the dir path
     proj_dir = path
 
