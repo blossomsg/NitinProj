@@ -38,6 +38,7 @@ def create_structure(path):
     proj_shotpubs_review = ["package", "source", "mov"]
     proj_shotpubs_lytaudio = ["audio"]
     proj_shotpubs_audio = ["package", "wav]
+    proj_shotpubs_anmdata = ["rig_materials"]]
 
 
 
