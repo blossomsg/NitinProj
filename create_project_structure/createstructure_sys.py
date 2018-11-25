@@ -22,7 +22,7 @@ def create_structure(path):
 
     # ALERT : Check how to add the directory to environment var so directly calling the file with python creates the folders
     # CAVEAT : Kindly give the dir path
-    proj_dir = [path]
+    proj_dir = path
 
     # CAVEAT : Project path lists
     proj_folder = ["Prod"]
@@ -48,6 +48,6 @@ def create_structure(path):
 
 if __name__ == '__main__':
     print "This is my main function"
-    # create_structure(sys.argv[1:])
-    create_structure("D:\\All_Projs\\TestProjForGit\\test_folder\\")
+    create_structure(sys.argv[1:])
+    # create_structure("D:\\All_Projs\\TestProjForGit\\test_folder\\")
 # HOWTO : create_structure("D:\\All_Projs\\TestProjForGit\\test_folder\\")
