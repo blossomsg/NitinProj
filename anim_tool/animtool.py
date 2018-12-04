@@ -1,4 +1,3 @@
-
 import maya.cmds as cmds
 
 panel = mc.getPanel(withFocus=True)
