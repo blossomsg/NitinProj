@@ -20,63 +20,42 @@ class AnimToolsUI(QtWidgets.QWidget):
         self.animtool_playblast_groupbox = QtWidgets.QGroupBox("Playblast")
 
         # CAVEAT : Browser
-        self.animtool_playblast_groupbox_qlineedit = QtWidgets.QLineEdit()
-        self.animtool_playblast_groupbox_qpushbutton = QtWidgets.QPushButton("Browser")
+        self.animtool_playblast_groupbox_path_qlineedit = QtWidgets.QLineEdit()
+        self.animtool_playblast_groupbox_browse_qpushbutton = QtWidgets.QPushButton("Browse")
 
         # CAVEAT : Viewport Mode List
-        self.animtool_playblast_groupbox_combobox = QtWidgets.QComboBox()
-        self.combobox_list_test = self.animtool_playblast_groupbox_combobox.addItem("test")
+        self.animtool_playblast_groupbox_vp_combobox = QtWidgets.QComboBox()
+        self.animtool_playblast_groupbox_vp_2_combobox = self.animtool_playblast_groupbox_vp_combobox.addItem("Viewport 2.0")
+        self.animtool_playblast_groupbox_vp_2_combobox = self.animtool_playblast_groupbox_vp_combobox.addItem(
+            "Legacy Default Viewport")
+        self.animtool_playblast_groupbox_vp_2_combobox = self.animtool_playblast_groupbox_vp_combobox.addItem(
+            "Legacy High Quality Viewport")
+        self.animtool_playblast_groupbox_playblast_qpushbutton = QtWidgets.QPushButton("Playblast")
 
         # CAVEAT : Layout for the multiple widgets
         self.animtool_grid_layout = QtWidgets.QGridLayout()
         self.animtool_playblast_groupbox_horizontal_layout = QtWidgets.QHBoxLayout()
-        self.animtool_playblast_groupbox_vertical_layout = QtWidgets.QVBoxLayout()
-        self.animtool_playblast_groupbox_box_layout = QtWidgets.QBoxLayout()
+        self.animtool_playblast_groupbox_box_layout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.Direction(QtWidgets.QBoxLayout.TopToBottom))
 
         #CAVEAT : Adding widget to layouts
         self.animtool_grid_layout.addWidget(self.animtool_playblast_groupbox)
+        self.animtool_playblast_groupbox.setLayout(self.animtool_playblast_groupbox_box_layout)
 
-        self.animtool_playblast_groupbox_horizontal_layout.addWidget(self.animtool_playblast_groupbox_qlineedit)
-        self.animtool_playblast_groupbox_horizontal_layout.addWidget(self.animtool_playblast_groupbox_qpushbutton)
+        self.animtool_playblast_groupbox_horizontal_layout.addWidget(self.animtool_playblast_groupbox_path_qlineedit)
+        self.animtool_playblast_groupbox_horizontal_layout.addWidget(self.animtool_playblast_groupbox_browse_qpushbutton)
 
-        self.animtool_playblast_groupbox_vertical_layout.addWidget(self.animtool_playblast_groupbox_combobox)
+        self.animtool_playblast_groupbox_box_layout.addLayout(self.animtool_playblast_groupbox_horizontal_layout)
+        self.animtool_playblast_groupbox_box_layout.addWidget(self.animtool_playblast_groupbox_vp_combobox)
+        self.animtool_playblast_groupbox_box_layout.addWidget(self.animtool_playblast_groupbox_playblast_qpushbutton)
 
-        self.animtool_playblast_groupbox.setLayout(self.animtool_playblast_groupbox_box_layout.addLayout(self.animtool_playblast_groupbox_vertical_layout))
-        self.animtool_playblast_groupbox.setLayout(self.animtool_playblast_groupbox_box_layout.addLayout(self.animtool_playblast_groupbox_horizontal_layout))
+        self.animtool_grid_layout.addLayout(self.animtool_playblast_groupbox_box_layout, 1,1)
         self.setLayout(self.animtool_grid_layout)
 
         self.setWindowTitle("AnimTools")
-        self.setFixedSize(300, 100)
+        self.setFixedSize(300, 130)
 
 
 if __name__ == "__main__":
     print "This is my main function"
     window = AnimToolsUI()
     window.show()
-
-
-
-
-
-# from PySide2 import QtCore, QtWidgets, QtGui
-#
-# animtool_grid_layout = QtWidgets.QGridLayout()
-# animtool_h_layout = QtWidgets.QHBoxLayout()
-# animtool_b_layout = QtWidgets.QBoxLayout(QtWidgets.QBoxLayout.Direction(QtWidgets.QBoxLayout.TopToBottom))
-# #animtool_b_layout = QtWidgets.QBoxLayout.Direction(QtCore.Qt.Orientation(QtWidgets.QBoxLayout.TopToBottom))
-# animtool_playblast_groupbox = QtWidgets.QGroupBox("Playblast")
-# animtool_playblast_groupbox_qlineedit = QtWidgets.QLineEdit()
-# animtool_playblast_groupbox_qpushbutton = QtWidgets.QPushButton("Browser")
-# animtool_playblast_groupbox_combobox = QtWidgets.QComboBox()
-# animtool_playblast_groupbox_qpushbutton_test = QtWidgets.QPushButton("TEST")
-# animtool_h_layout.addWidget(animtool_playblast_groupbox_qlineedit)
-# animtool_h_layout.addWidget(animtool_playblast_groupbox_qpushbutton)
-# animtool_b_layout.addLayout(animtool_h_layout)
-# animtool_b_layout.addWidget(animtool_playblast_groupbox_combobox)
-# animtool_b_layout.addWidget(animtool_playblast_groupbox_qpushbutton_test)
-# animtool_grid_layout.addLayout(animtool_b_layout, 1,1)
-#
-#
-# animtool_playblast_groupbox.setLayout(animtool_grid_layout)
-# window = animtool_playblast_groupbox
-# window.show()
