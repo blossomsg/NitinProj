@@ -42,13 +42,14 @@ class AnimCompactUI(QtWidgets.QWidget):
 		self.animcomp_parenthorizontal_vertical_layout = QtWidgets.QVBoxLayout(self.animcomp_toolbox_palyblast_column)
 		self.animcomp_browser_horizontal_layout = QtWidgets.QHBoxLayout()
 
-
 		# CAVEAT : Adding widget to layouts/ Connections
 		self.animcomp_toolbox.addItem(self.animcomp_toolbox_palyblast_column, "Playblast")
 		self.animcomp_toolbox.addItem(self.animcomp_toolbox_comingsoon_column, "ComingSoon")
 		self.animcomp_browser_horizontal_layout.addWidget(self.animcomp_path_qlineedit)
 		self.animcomp_browser_horizontal_layout.addWidget(self.animcomp_browse_qpushbutton)
 		self.animcomp_parenthorizontal_vertical_layout.addLayout(self.animcomp_browser_horizontal_layout)
+		self.animcomp_parenthorizontal_vertical_layout.addWidget(self.animcomp_vp_combobox)
+		self.animcomp_parenthorizontal_vertical_layout.addWidget(self.animcomp_playblast_qpushbutton)
 		self.animcomp_grid_layout.addWidget(self.animcomp_toolbox)
 		self.setLayout(self.animcomp_grid_layout)
 
