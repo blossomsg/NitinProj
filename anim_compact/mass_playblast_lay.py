@@ -1,25 +1,11 @@
-from PySide2 import QtCore
-from PySide2 import QtGui
 from PySide2 import QtWidgets
-import maya.cmds as cmds
-import maya.OpenMayaUI as omui
-from shiboken2 import wrapInstance
-
-ptr = omui.MQtUtil.mainWindow()
-ptr_instance = wrapInstance(long(ptr), QtWidgets.QWidget)
 
 
-class AnimCompactUI(QtWidgets.QWidget):
+class MassPlayblastLay(QtWidgets.QWidget):
 	def __init__(self):
-		super(AnimCompactUI, self).__init__()
-		# CAVEAT : Parent ui to the application through which the ui is being created
-		self.setParent(ptr_instance)
-		self.setWindowFlags(QtCore.Qt.Window)
-
-		# CAVEAT : Playblast Toolbox
-		self.animcomp_toolbox = QtWidgets.QToolBox()
+		super(MassPlayblastLay, self).__init__()
+		# CAVEAT : Playblast Toolbox Layout
 		self.animcomp_toolbox_palyblast_column = QtWidgets.QWidget()
-		self.animcomp_toolbox_comingsoon_column = QtWidgets.QWidget()
 
 		# CAVEAT : Default Vp settings
 
@@ -38,26 +24,18 @@ class AnimCompactUI(QtWidgets.QWidget):
 		self.animcomp_playblast_qpushbutton = QtWidgets.QPushButton("Playblast")
 
 		# CAVEAT : Layout for the multiple widgets
-		self.animcomp_grid_layout = QtWidgets.QGridLayout()
 		self.animcomp_parenthorizontal_vertical_layout = QtWidgets.QVBoxLayout(self.animcomp_toolbox_palyblast_column)
 		self.animcomp_browser_horizontal_layout = QtWidgets.QHBoxLayout()
 
-		# CAVEAT : Adding widget to layouts/ Connections
-		self.animcomp_toolbox.addItem(self.animcomp_toolbox_palyblast_column, "Playblast")
-		self.animcomp_toolbox.addItem(self.animcomp_toolbox_comingsoon_column, "ComingSoon")
+		# CAVEAT : Adding widget to Layouts/Connections
 		self.animcomp_browser_horizontal_layout.addWidget(self.animcomp_path_qlineedit)
 		self.animcomp_browser_horizontal_layout.addWidget(self.animcomp_browse_qpushbutton)
 		self.animcomp_parenthorizontal_vertical_layout.addLayout(self.animcomp_browser_horizontal_layout)
 		self.animcomp_parenthorizontal_vertical_layout.addWidget(self.animcomp_vp_combobox)
 		self.animcomp_parenthorizontal_vertical_layout.addWidget(self.animcomp_playblast_qpushbutton)
-		self.animcomp_grid_layout.addWidget(self.animcomp_toolbox)
-		self.setLayout(self.animcomp_grid_layout)
-
-		self.setWindowTitle("AnimCompact")
-		# self.setFixedSize(300, 130)
 
 
 if __name__ == "__main__":
-	print "This is my main function"
-	window = AnimCompactUI()
-	window.show()
+	print "This is my Main Class"
+else:
+	print "This is MassPlayblastLay"
