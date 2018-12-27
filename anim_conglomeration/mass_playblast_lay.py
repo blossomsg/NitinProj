@@ -1,38 +1,44 @@
 from PySide2 import QtWidgets
+from PySide2 import QtGui
 
 
 class MassPlayblastLay(QtWidgets.QWidget):
 	def __init__(self):
 		super(MassPlayblastLay, self).__init__()
 		# CAVEAT : Playblast Toolbox Layout
-		self.animcomp_toolbox_palyblast_column = QtWidgets.QWidget()
+		self.animcog_toolbox_palyblast_column = QtWidgets.QWidget()
 
 		# CAVEAT : Default Vp settings
+		self.animcog_textured_qpushbutton = QtWidgets.QToolButton.setIcon(QtGui.QIcon("D:\\All_Projs\\NitinProj\\anim_conglomeration\\chess.png"))
 
 		# CAVEAT : Browser
-		self.animcomp_path_qlineedit = QtWidgets.QLineEdit()
-		self.animcomp_browse_qpushbutton = QtWidgets.QPushButton("Browse")
+		self.animcog_path_qlineedit = QtWidgets.QLineEdit()
+		self.animcog_browse_qpushbutton = QtWidgets.QPushButton("Browse")
 
 		# CAVEAT : Viewport Mode List
-		self.animcomp_vp_combobox = QtWidgets.QComboBox()
-		self.animcomp_vp_2_combobox = self.animcomp_vp_combobox.addItem(
+		self.animcog_vp_combobox = QtWidgets.QComboBox()
+		self.animcog_vp_2_combobox = self.animcog_vp_combobox.addItem(
 			"Viewport 2.0")
-		self.animcomp_ldvp_combobox = self.animcomp_vp_combobox.addItem(
+		self.animcog_ldvp_combobox = self.animcog_vp_combobox.addItem(
 			"Legacy Default Viewport")
-		self.animcomp_lhqvp_combobox = self.animcomp_vp_combobox.addItem(
+		self.animcog_lhqvp_combobox = self.animcog_vp_combobox.addItem(
 			"Legacy High Quality Viewport")
-		self.animcomp_playblast_qpushbutton = QtWidgets.QPushButton("Playblast")
+		self.animcog_playblast_qpushbutton = QtWidgets.QPushButton("Playblast")
 
 		# CAVEAT : Layout for the multiple widgets
-		self.animcomp_parenthorizontal_vertical_layout = QtWidgets.QVBoxLayout(self.animcomp_toolbox_palyblast_column)
-		self.animcomp_browser_horizontal_layout = QtWidgets.QHBoxLayout()
+		self.animcog_parenthorizontal_vertical_layout = QtWidgets.QVBoxLayout(self.animcog_toolbox_palyblast_column)
+		self.animcog_browser_horizontal_layout = QtWidgets.QHBoxLayout()
+		self.animcog_switches_buttons_horizontal_layout = QtWidgets.QHBoxLayout()
 
 		# CAVEAT : Adding widget to Layouts/Connections
-		self.animcomp_browser_horizontal_layout.addWidget(self.animcomp_path_qlineedit)
-		self.animcomp_browser_horizontal_layout.addWidget(self.animcomp_browse_qpushbutton)
-		self.animcomp_parenthorizontal_vertical_layout.addLayout(self.animcomp_browser_horizontal_layout)
-		self.animcomp_parenthorizontal_vertical_layout.addWidget(self.animcomp_vp_combobox)
-		self.animcomp_parenthorizontal_vertical_layout.addWidget(self.animcomp_playblast_qpushbutton)
+		self.animcog_browser_horizontal_layout.addWidget(self.animcog_path_qlineedit)
+		self.animcog_browser_horizontal_layout.addWidget(self.animcog_browse_qpushbutton)
+		self.animcog_switches_buttons_horizontal_layout.addWidget(self.animcog_textured_qpushbutton)
+		self.animcog_parenthorizontal_vertical_layout.addLayout(self.animcog_browser_horizontal_layout)
+		self.animcog_parenthorizontal_vertical_layout.addLayout(self.animcog_switches_buttons_horizontal_layout)
+		self.animcog_parenthorizontal_vertical_layout.addWidget(self.animcog_vp_combobox)
+		self.animcog_parenthorizontal_vertical_layout.addWidget(self.animcog_playblast_qpushbutton)
+
 
 
 if __name__ == "__main__":

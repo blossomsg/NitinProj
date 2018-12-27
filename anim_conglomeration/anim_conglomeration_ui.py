@@ -26,20 +26,20 @@ class AnimConglomerationUI(mass_playblast_lay.MassPlayblastLay):
 		self.setWindowFlags(QtCore.Qt.Window)
 
 		# CAVEAT : Playblast Toolbox
-		self.animcomp_toolbox = QtWidgets.QToolBox()
-		self.animcomp_toolbox_comingsoon_column = QtWidgets.QWidget()
+		self.animcog_toolbox = QtWidgets.QToolBox()
+		self.animcog_toolbox_comingsoon_column = QtWidgets.QWidget()
 
 		# CAVEAT : Layout for the Toolbox widgets
-		self.animcomp_grid_layout = QtWidgets.QGridLayout()
+		self.animcog_grid_layout = QtWidgets.QGridLayout()
 
 		# CAVEAT : Adding widget to MassLayouts/ Connections
-		self.animcomp_toolbox.addItem(self.animcomp_toolbox_palyblast_column, "Playblast")
-		self.animcomp_toolbox.addItem(self.animcomp_toolbox_comingsoon_column, "ComingSoon")
-		self.animcomp_grid_layout.addWidget(self.animcomp_toolbox)
-		self.setLayout(self.animcomp_grid_layout)
+		self.animcog_toolbox.addItem(self.animcog_toolbox_palyblast_column, "Playblast")
+		self.animcog_toolbox.addItem(self.animcog_toolbox_comingsoon_column, "ComingSoon")
+		self.animcog_grid_layout.addWidget(self.animcog_toolbox)
+		self.setLayout(self.animcog_grid_layout)
 
-		self.setWindowTitle("AnimCompact")
-		# self.setFixedSize(300, 130)
+		self.setWindowTitle("animcogact")
+	# self.setFixedSize(300, 130)
 
 
 if __name__ == "__main__":
