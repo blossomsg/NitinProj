@@ -14,19 +14,6 @@ class MassPlayblastLay(QtWidgets.QWidget):
         self.animcog_mpb_toolbox_palyblast_column.setStyleSheet("QWidget {background-color:#95c7db;}")
 
         # CAVEAT : Default Vp settings
-        self.animcog_mpb_ambocclusion_qpushbutton = QtWidgets.QPushButton()
-        self.animcog_mpb_ambocclusion_qpushbutton.setIcon(
-            QtGui.QIcon("E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons\\question-mark.png"))
-        self.animcog_mpb_ambocclusion_qpushbutton.setFlat(True)
-        self.animcog_mpb_ambocclusion_qpushbutton.setCheckable(True)
-        self.animcog_mpb_ambocclusion_qpushbutton.setFixedSize(20, 20)
-        self.animcog_mpb_ambocclusion_qpushbutton.setStyleSheet("QPushButton:pressed{background:#054f6d; border:none} "
-                                                                "QPushButton:checked{background:#054f6d; border:none} "
-                                                                "QPushButton:hover:checked{image: url("
-                                                                "E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons"
-                                                                "\\question-mark.png); border:none} QPushButton:hover{"
-                                                                "image: url(E:\\Proj_Codes\\NitinProj\\anim_conglomeration"
-                                                                "\\icons\\question-mark.png); border:none}")
         self.animcog_mpb_usealllights_qpushbutton = QtWidgets.QPushButton()
         self.animcog_mpb_usealllights_qpushbutton.setIcon(
             QtGui.QIcon("E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons\\question-mark.png"))
@@ -38,8 +25,10 @@ class MassPlayblastLay(QtWidgets.QWidget):
                                                                 "QPushButton:hover:checked{image: url("
                                                                 "E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons"
                                                                 "\\question-mark.png); border:none} QPushButton:hover{"
-                                                                "image: url(E:\\Proj_Codes\\NitinProj\\anim_conglomeration"
+                                                                "image: url(E:\\Proj_Codes\\NitinProj"
+                                                                "\\anim_conglomeration "
                                                                 "\\icons\\question-mark.png); border:none}")
+
         self.animcog_mpb_shadows_qpushbutton = QtWidgets.QPushButton()
         self.animcog_mpb_shadows_qpushbutton.setIcon(
             QtGui.QIcon("E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons\\question-mark.png"))
@@ -53,6 +42,22 @@ class MassPlayblastLay(QtWidgets.QWidget):
                                                            "\\question-mark.png); border:none} QPushButton:hover{"
                                                            "image: url(E:\\Proj_Codes\\NitinProj\\anim_conglomeration"
                                                            "\\icons\\question-mark.png); border:none}")
+
+        self.animcog_mpb_ambocclusion_qpushbutton = QtWidgets.QPushButton()
+        self.animcog_mpb_ambocclusion_qpushbutton.setIcon(
+            QtGui.QIcon("E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons\\question-mark.png"))
+        self.animcog_mpb_ambocclusion_qpushbutton.setFlat(True)
+        self.animcog_mpb_ambocclusion_qpushbutton.setCheckable(True)
+        self.animcog_mpb_ambocclusion_qpushbutton.setFixedSize(20, 20)
+        self.animcog_mpb_ambocclusion_qpushbutton.setStyleSheet("QPushButton:pressed{background:#054f6d; border:none} "
+                                                                "QPushButton:checked{background:#054f6d; border:none} "
+                                                                "QPushButton:hover:checked{image: url("
+                                                                "E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons"
+                                                                "\\question-mark.png); border:none} QPushButton:hover{"
+                                                                "image: url(E:\\Proj_Codes\\NitinProj"
+                                                                "\\anim_conglomeration "
+                                                                "\\icons\\question-mark.png); border:none}")
+
         self.animcog_mpb_antialiasing_qpushbutton = QtWidgets.QPushButton()
         self.animcog_mpb_antialiasing_qpushbutton.setIcon(
             QtGui.QIcon("E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons\\question-mark.png"))
@@ -64,7 +69,8 @@ class MassPlayblastLay(QtWidgets.QWidget):
                                                                 "QPushButton:hover:checked{image: url("
                                                                 "E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons"
                                                                 "\\question-mark.png); border:none} QPushButton:hover{"
-                                                                "image: url(E:\\Proj_Codes\\NitinProj\\anim_conglomeration"
+                                                                "image: url(E:\\Proj_Codes\\NitinProj"
+                                                                "\\anim_conglomeration "
                                                                 "\\icons\\question-mark.png); border:none}")
 
         # CAVEAT : Browser
@@ -77,7 +83,8 @@ class MassPlayblastLay(QtWidgets.QWidget):
         # CAVEAT : Viewport Mode List
         self.animcog_mpb_vp_combobox = QtWidgets.QComboBox()
         self.animcog_mpb_vp_combobox.setStyleSheet(
-            "QComboBox {background-color:#054f6d; color:#81d0ef; background:#054f6d} QComboBox QAbstractItemView {background-color:#054f6d; color:#81d0ef; background:#054f6d}")
+            "QComboBox {background-color:#054f6d; color:#81d0ef; background:#054f6d} QComboBox QAbstractItemView {"
+            "background-color:#054f6d; color:#81d0ef; background:#054f6d}")
         self.animcog_mpb_vp_2_combobox = self.animcog_mpb_vp_combobox.addItem(
             "Viewport 2.0")
         self.animcog_mpb_ldvp_combobox = self.animcog_mpb_vp_combobox.addItem(
@@ -96,9 +103,9 @@ class MassPlayblastLay(QtWidgets.QWidget):
         # CAVEAT : Adding widget to Layouts/Connections
         self.animcog_mpb_browser_horizontal_layout.addWidget(self.animcog_mpb_path_qlineedit)
         self.animcog_mpb_browser_horizontal_layout.addWidget(self.animcog_mpb_browse_qpushbutton)
-        self.animcog_mpb_vp_buttons.addWidget(self.animcog_mpb_ambocclusion_qpushbutton)
         self.animcog_mpb_vp_buttons.addWidget(self.animcog_mpb_usealllights_qpushbutton)
         self.animcog_mpb_vp_buttons.addWidget(self.animcog_mpb_shadows_qpushbutton)
+        self.animcog_mpb_vp_buttons.addWidget(self.animcog_mpb_ambocclusion_qpushbutton)
         self.animcog_mpb_vp_buttons.addWidget(self.animcog_mpb_antialiasing_qpushbutton)
         self.animcog_mpb_parent_horizontal_vertical_layout.addLayout(self.animcog_mpb_browser_horizontal_layout)
         self.animcog_mpb_parent_horizontal_vertical_layout.addLayout(self.animcog_mpb_vp_buttons)

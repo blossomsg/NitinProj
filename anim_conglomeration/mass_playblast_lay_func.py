@@ -17,9 +17,25 @@ class MassPlayblastLayFunc(anim_conglomeration_ui.AnimConglomerationUI):
         super(MassPlayblastLayFunc, self).__init__()
 
         self.animcog_mpb_browse_qpushbutton.clicked.connect(self.animcog_mpb_browse_button_func)
+        self.animcog_mpb_usealllights_qpushbutton.pressed.connect(self.animcog_mpb_usealllights_toggle_button_on_func)
+        # self.animcog_mpb_usealllights_qpushbutton.connect(self.animcog_mpb_usealllights_toggle_button_off_func)
 
     def animcog_mpb_browse_button_func(self):
-        cmds.fileDialog2(dialogStyle=2)
+        self.browse_path = cmds.fileDialog2(dialogStyle=2)
+        print "Playblast Saving Path --> %s" %self.browse_path[0]
+        self.animcog_mpb_path_qlineedit.setText(self.browse_path[0])
+
+    def animcog_mpb_usealllights_toggle_button_on_func(self):
+        cmds.modelEditor("modelPanel4", edit=True, displayLights="all")
+
+    def animcog_mpb_usealllights_toggle_button_off_func(self):
+        cmds.modelEditor("modelPanel4", edit=False, displayLights="all")
+
+        #
+        # cmds.modelEditor("modelPanel4", edit=True, shadows=True)
+        # cmds.setAttr("hardwareRenderingGlobals.ssaoEnable", 1)
+        # cmds.setAttr("hardwareRenderingGlobals.multiSampleEnable", 1)
+
 #
 # if __name__ == "__main__":
 #     print "This is my Main Class"
