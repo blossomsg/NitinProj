@@ -2,6 +2,7 @@ from PySide2 import QtCore
 from PySide2 import QtGui
 from PySide2 import QtWidgets
 import maya.cmds as cmds
+import maya.mel as mel
 import maya.OpenMayaUI as omui
 from shiboken2 import wrapInstance
 
@@ -21,17 +22,19 @@ class MassPlayblastLayFunc(anim_conglomeration_ui.AnimConglomerationUI):
         self.animcog_mpb_shadows_qpushbutton.clicked.connect(self.animcog_mpb_shadows_toggle_button_func)
         self.animcog_mpb_ambocclusion_qpushbutton.clicked.connect(self.animcog_mpb_ambocclusion_toggle_button_func)
         self.animcog_mpb_antialiasing_qpushbutton.clicked.connect(self.animcog_mpb_antialiasing_toggle_button_func)
-        self.animcog_mpb_vp_combobox.activated.connect(self.anim_mpb_vp_mode_func)
+        self.animcog_mpb_vp_combobox.activated.connect(self.animcog_mpb_vp_mode_func)
+        self.animcog_mpb_playblast_qpushbutton.clicked.connect(self.animcog_mpb_playblast_button)
+        self.animcog_mpb_default_settings()
 
+    def animcog_mpb_default_settings(self):
         cmds.modelEditor("modelPanel4", edit=True, rendererName="vp2Renderer")
-
         cmds.modelEditor("modelPanel4", edit=True, displayLights="none")
         cmds.modelEditor("modelPanel4", edit=True, shadows=False)
         cmds.setAttr("hardwareRenderingGlobals.ssaoEnable", 0)
         cmds.setAttr("hardwareRenderingGlobals.multiSampleEnable", 0)
 
     def animcog_mpb_browse_button_func(self):
-        self.browse_path = cmds.fileDialog2(dialogStyle=2)
+        self.browse_path = cmds.fileDialog2(fileFilter="Movie Files(*.mov)", dialogStyle=2)
         print "Playblast Saving Path --> %s" %self.browse_path[0]
         self.animcog_mpb_path_qlineedit.setText(self.browse_path[0])
 
@@ -59,7 +62,7 @@ class MassPlayblastLayFunc(anim_conglomeration_ui.AnimConglomerationUI):
         else:
             cmds.setAttr("hardwareRenderingGlobals.multiSampleEnable", 0)
 
-    def anim_mpb_vp_mode_func(self):
+    def animcog_mpb_vp_mode_func(self):
         if self.animcog_mpb_vp_combobox.currentText() == "Viewport 2.0":
             print self.animcog_mpb_vp_combobox.currentText()
             cmds.modelEditor("modelPanel4", edit=True, rendererName="vp2Renderer")
@@ -70,11 +73,20 @@ class MassPlayblastLayFunc(anim_conglomeration_ui.AnimConglomerationUI):
             print self.animcog_mpb_vp_combobox.currentText()
             cmds.modelEditor("modelPanel4", edit=True, rendererName="hwRender_OpenGL_Renderer")
 
-#
-# if __name__ == "__main__":
-#     print "This is my Main Class"
-# else:
-#     print "This is MassPlayblastLayFunc"
+    def animcog_mpb_playblast_button(self):
+        self.time_slider = mel.eval("$gPlayBackSlider = $gPlayBackSlider")
+        self.soundtrack_name = cmds.timeControl(self.time_slider, query=True, sound=True)
+        self.default_width = cmds.getAttr ("defaultResolution.width")
+        self.default_height = cmds.getAttr("defaultResolution.height")
+        cmds.playblast(format="qt", offScreen=True, percent=100, quality=100, filename="%s"%self.browse_path[0],
+                       forceOverwrite=True, clearCache=True, viewer=True, showOrnaments=False, compression="PNG",
+                       sequenceTime=False, sound=self.soundtrack_name, widthHeight=[self.default_width, self.default_height])
+
+
+if __name__ == "__main__":
+    print "This is my Main Class"
+else:
+    print "This is MassPlayblastLayFunc"
 
 
 # import sys
@@ -99,4 +111,10 @@ class MassPlayblastLayFunc(anim_conglomeration_ui.AnimConglomerationUI):
 # cmds.modelEditor("modelPanel4", edit=True, rendererName="vp2Renderer")
 # cmds.modelEditor("modelPanel4", edit=True, rendererName="hwRender_OpenGL_Renderer")
 # cmds.modelEditor("modelPanel4", edit=True, rendererName="base_OpenGL_Renderer")
+# browse_path = cmds.fileDialog2(fileFilter="Movie Files(*.mov)", dialogStyle=2)
+# time_control = mel.eval("$gPlayBackSlider = $gPlayBackSlider")
+# sound_name = cmds.timeControl(time_control, query=True, sound=True)
+# cmds.playblast( format="qt", offScreen=True, percent=100, quality=100, filename="E:\\Proj_References\\test.mov", forceOverwrite=True, clearCache=True, viewer=True, showOrnaments=False, compression="PNG", sequenceTime=False, sound=sound_name )
+# default_width = cmds.getAttr ("defaultResolution.width")
+# default_height = cmds.getAttr("defaultResolution.height")
 # # Result: [u'vp2Renderer',u'base_OpenGL_Renderer',u'hwRender_OpenGL_Renderer',u'stub_Renderer'] #
