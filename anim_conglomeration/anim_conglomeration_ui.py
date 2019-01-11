@@ -1,12 +1,4 @@
-import sys
-
-path_anim_tools = "E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\"
-if not path_anim_tools in sys.path:
-    sys.path.append(path_anim_tools)
 import mass_playblast_lay
-
-reload(mass_playblast_lay)
-
 from PySide2 import QtCore
 from PySide2 import QtWidgets
 import maya.OpenMayaUI as omui
