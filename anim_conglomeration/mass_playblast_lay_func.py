@@ -84,7 +84,7 @@ class MassPlayblastLayFunc(anim_conglomeration_ui.AnimConglomerationUI):
 
 
 if __name__ == "__main__":
-    print "This is my Main Class"
+    print "This is my Main MassPlayblastLayFunc"
 else:
     print "This is MassPlayblastLayFunc"
 

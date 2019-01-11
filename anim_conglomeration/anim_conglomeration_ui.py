@@ -1,10 +1,3 @@
-from PySide2 import QtCore
-from PySide2 import QtGui
-from PySide2 import QtWidgets
-import maya.cmds as cmds
-import maya.OpenMayaUI as omui
-from shiboken2 import wrapInstance
-
 import sys
 
 path_anim_tools = "E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\"
@@ -13,6 +6,11 @@ if not path_anim_tools in sys.path:
 import mass_playblast_lay
 
 reload(mass_playblast_lay)
+
+from PySide2 import QtCore
+from PySide2 import QtWidgets
+import maya.OpenMayaUI as omui
+from shiboken2 import wrapInstance
 
 ptr = omui.MQtUtil.mainWindow()
 ptr_instance = wrapInstance(long(ptr), QtWidgets.QWidget)
@@ -43,6 +41,8 @@ class AnimConglomerationUI(mass_playblast_lay.MassPlayblastLay):
 
 
 if __name__ == "__main__":
-    print "This is my animcog function"
+    print "This is Main AnimConglomerationUI"
+else:
+    print "This is AnimConglomerationUI"
     window = AnimConglomerationUI()
     window.show()

@@ -114,6 +114,6 @@ class MassPlayblastLay(QtWidgets.QWidget):
 
 
 if __name__ == "__main__":
-    print "This is my Main Class"
+    print "This is my Main MassPlayblastLay"
 else:
     print "This is MassPlayblastLay"
