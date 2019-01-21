@@ -1,6 +1,7 @@
 import mass_playblast_lay
 from PySide2 import QtCore
 from PySide2 import QtWidgets
+from PySide2 import QtGui
 import maya.OpenMayaUI as omui
 from shiboken2 import wrapInstance
 
@@ -29,6 +30,8 @@ class AnimConglomerationUI(mass_playblast_lay.MassPlayblastLay):
         self.setLayout(self.animcog_grid_layout)
 
         self.setWindowTitle("animcog v1.0")
+        self.setWindowIcon("E:\\Proj_Codes\\NitinProj\\icons\\anim_conglomeration\\tool_logo\\molecule.png")
+        # self.windowIcon("E:\\Proj_Codes\\NitinProj\\icons\\anim_conglomeration\\tool_logo\\molecule.png")
         self.setFixedSize(250, 230)
 
 
@@ -36,5 +39,5 @@ if __name__ == "__main__":
     print "This is Main AnimConglomerationUI"
 else:
     print "This is AnimConglomerationUI"
-    window = AnimConglomerationUI()
-    window.show()
+    # window = AnimConglomerationUI()
+    # window.show()

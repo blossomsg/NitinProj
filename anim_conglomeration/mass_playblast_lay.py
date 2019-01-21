@@ -16,62 +16,49 @@ class MassPlayblastLay(QtWidgets.QWidget):
         # CAVEAT : Default Vp settings
         self.animcog_mpb_usealllights_qpushbutton = QtWidgets.QPushButton()
         self.animcog_mpb_usealllights_qpushbutton.setIcon(
-            QtGui.QIcon("E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons\\question-mark.png"))
+            QtGui.QIcon("E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png"))
         self.animcog_mpb_usealllights_qpushbutton.setFlat(True)
         self.animcog_mpb_usealllights_qpushbutton.setCheckable(True)
         self.animcog_mpb_usealllights_qpushbutton.setFixedSize(20, 20)
         self.animcog_mpb_usealllights_qpushbutton.setStyleSheet("QPushButton:pressed{background:#054f6d; border:none} "
                                                                 "QPushButton:checked{background:#054f6d; border:none} "
-                                                                "QPushButton:hover:checked{image: url("
-                                                                "E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons"
-                                                                "\\question-mark.png); border:none} QPushButton:hover{"
-                                                                "image: url(E:\\Proj_Codes\\NitinProj"
-                                                                "\\anim_conglomeration "
-                                                                "\\icons\\question-mark.png); border:none}")
+                                                                "QPushButton:hover:checked{image:url(E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png); border:none}" 
+                                                                "QPushButton:hover{image: url(E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png); border:none}")
 
         self.animcog_mpb_shadows_qpushbutton = QtWidgets.QPushButton()
         self.animcog_mpb_shadows_qpushbutton.setIcon(
-            QtGui.QIcon("E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons\\question-mark.png"))
+            QtGui.QIcon("E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png"))
         self.animcog_mpb_shadows_qpushbutton.setFlat(True)
         self.animcog_mpb_shadows_qpushbutton.setCheckable(True)
         self.animcog_mpb_shadows_qpushbutton.setFixedSize(20, 20)
         self.animcog_mpb_shadows_qpushbutton.setStyleSheet("QPushButton:pressed{background:#054f6d; border:none} "
                                                            "QPushButton:checked{background:#054f6d; border:none} "
-                                                           "QPushButton:hover:checked{image: url("
-                                                           "E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons"
-                                                           "\\question-mark.png); border:none} QPushButton:hover{"
-                                                           "image: url(E:\\Proj_Codes\\NitinProj\\anim_conglomeration"
-                                                           "\\icons\\question-mark.png); border:none}")
+                                                           "QPushButton:hover:checked{image: url(E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png); border:none}" 
+                                                           "QPushButton:hover{E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png); border:none}")
 
         self.animcog_mpb_ambocclusion_qpushbutton = QtWidgets.QPushButton()
         self.animcog_mpb_ambocclusion_qpushbutton.setIcon(
-            QtGui.QIcon("E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons\\question-mark.png"))
+            QtGui.QIcon("E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png"))
         self.animcog_mpb_ambocclusion_qpushbutton.setFlat(True)
         self.animcog_mpb_ambocclusion_qpushbutton.setCheckable(True)
         self.animcog_mpb_ambocclusion_qpushbutton.setFixedSize(20, 20)
         self.animcog_mpb_ambocclusion_qpushbutton.setStyleSheet("QPushButton:pressed{background:#054f6d; border:none} "
                                                                 "QPushButton:checked{background:#054f6d; border:none} "
-                                                                "QPushButton:hover:checked{image: url("
-                                                                "E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons"
-                                                                "\\question-mark.png); border:none} QPushButton:hover{"
-                                                                "image: url(E:\\Proj_Codes\\NitinProj"
-                                                                "\\anim_conglomeration "
-                                                                "\\icons\\question-mark.png); border:none}")
+                                                                "QPushButton:hover:checked{image: url(E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png); border:none}" 
+                                                                "QPushButton:hover{E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png); border:none}")
+
 
         self.animcog_mpb_antialiasing_qpushbutton = QtWidgets.QPushButton()
         self.animcog_mpb_antialiasing_qpushbutton.setIcon(
-            QtGui.QIcon("E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons\\question-mark.png"))
+            QtGui.QIcon("E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png"))
         self.animcog_mpb_antialiasing_qpushbutton.setFlat(True)
         self.animcog_mpb_antialiasing_qpushbutton.setCheckable(True)
         self.animcog_mpb_antialiasing_qpushbutton.setFixedSize(20, 20)
         self.animcog_mpb_antialiasing_qpushbutton.setStyleSheet("QPushButton:pressed{background:#054f6d; border:none} "
                                                                 "QPushButton:checked{background:#054f6d; border:none} "
-                                                                "QPushButton:hover:checked{image: url("
-                                                                "E:\\Proj_Codes\\NitinProj\\anim_conglomeration\\icons"
-                                                                "\\question-mark.png); border:none} QPushButton:hover{"
-                                                                "image: url(E:\\Proj_Codes\\NitinProj"
-                                                                "\\anim_conglomeration "
-                                                                "\\icons\\question-mark.png); border:none}")
+                                                                "QPushButton:hover:checked{image: url(E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png); border:none}" 
+                                                                "QPushButton:hover{E:\\Proj_Codes\\NitinProj\icons\\anim_conglomeration\\viewport_modes\\question-mark.png); border:none}")
+
 
         # CAVEAT : Browser
         self.animcog_mpb_path_qlineedit = QtWidgets.QLineEdit()
