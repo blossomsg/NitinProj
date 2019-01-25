@@ -30,7 +30,7 @@ class AnimConglomerationUI(mass_playblast_lay.MassPlayblastLay):
         self.setLayout(self.animcog_grid_layout)
 
         self.setWindowTitle("animcog v1.0")
-        self.setWindowIcon("E:\\Proj_Codes\\NitinProj\\icons\\anim_conglomeration\\tool_logo\\molecule.png")
+        # self.setWindowIcon("E:\\Proj_Codes\\NitinProj\\icons\\anim_conglomeration\\tool_logo\\molecule.png")
         # self.windowIcon("E:\\Proj_Codes\\NitinProj\\icons\\anim_conglomeration\\tool_logo\\molecule.png")
         self.setFixedSize(250, 230)
 

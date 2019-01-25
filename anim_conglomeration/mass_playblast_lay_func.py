@@ -1,6 +1,7 @@
 import anim_conglomeration_ui
 import maya.cmds as cmds
 import maya.mel as mel
+import tempfile
 
 
 class MassPlayblastLayFunc(anim_conglomeration_ui.AnimConglomerationUI):
@@ -77,10 +78,18 @@ class MassPlayblastLayFunc(anim_conglomeration_ui.AnimConglomerationUI):
         self.soundtrack_name = cmds.timeControl(self.time_slider, query=True, sound=True)
         self.default_width = cmds.getAttr("defaultResolution.width")
         self.default_height = cmds.getAttr("defaultResolution.height")
-        cmds.playblast(format="qt", offScreen=True, percent=100, quality=100, filename="%s" % self.browse_path[0],
-                       forceOverwrite=True, clearCache=True, viewer=True, showOrnaments=False, compression="PNG",
-                       sequenceTime=False, sound=self.soundtrack_name,
-                       widthHeight=[self.default_width, self.default_height])
+        self.tmpdir = tempfile.gettempdir()
+        if self.animcog_mpb_path_qlineedit.text():
+            cmds.playblast(format="qt", offScreen=True, percent=100, quality=100, filename="%s" % self.animcog_mpb_path_qlineedit.text(),
+                           forceOverwrite=True, clearCache=True, viewer=True, showOrnaments=False, compression="PNG",
+                           sequenceTime=False, sound=self.soundtrack_name,
+                           widthHeight=[self.default_width, self.default_height])
+        else:
+            cmds.playblast(format="qt", offScreen=True, percent=100, quality=100,
+                           forceOverwrite=True, clearCache=True, viewer=True, showOrnaments=False, compression="PNG",
+                           sequenceTime=False, sound=self.soundtrack_name,
+                           widthHeight=[self.default_width, self.default_height])
+
 
 
 if __name__ == "__main__":
