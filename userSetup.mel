@@ -1,0 +1,1 @@
+evalDeferred("modelEditor -edit -displayAppearance boundingBox modelPanel4;");
