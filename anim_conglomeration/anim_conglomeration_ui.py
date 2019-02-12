@@ -16,14 +16,14 @@ class AnimConglomerationUI(mass_playblast_lay.MassPlayblastLay):
         self.setParent(ptr_instance)
         self.setWindowFlags(QtCore.Qt.Window)
 
-        # CAVEAT : Playblast Toolbox
+        # CAVEAT : Playblast Toolbox widget creation
         self.animcog_toolbox = QtWidgets.QToolBox()
         self.animcog_toolbox_comingsoon_column = QtWidgets.QWidget()
 
         # CAVEAT : Layout for the Toolbox widgets
         self.animcog_grid_layout = QtWidgets.QGridLayout()
 
-        # CAVEAT : Adding widget to MassLayouts/ Connections
+        # CAVEAT : Adding widgets to MassLayouts/ Connections
         self.animcog_toolbox.addItem(self.animcog_mpb_toolbox_palyblast_column, "Playblast")
         self.animcog_toolbox.addItem(self.animcog_toolbox_comingsoon_column, "ComingSoon")
         self.animcog_grid_layout.addWidget(self.animcog_toolbox)
