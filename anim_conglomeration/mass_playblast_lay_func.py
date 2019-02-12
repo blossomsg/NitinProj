@@ -37,7 +37,7 @@ class MassPlayblastLayFunc(anim_conglomeration_ui.AnimConglomerationUI):
         if self.animcog_mpb_usealllights_qpushbutton.isChecked():
             cmds.modelEditor("modelPanel4", edit=True, displayLights="all")
         else:
-            cmds.modelEditor("modelPanel4", edit=True, displayLights="none")
+            cmds.modelEditor("modelPanel4", edit=True, displayLights="default")
 
     # CAVEAT : AnimConglomerationUI shadows func
     def animcog_mpb_shadows_toggle_button_func(self):
