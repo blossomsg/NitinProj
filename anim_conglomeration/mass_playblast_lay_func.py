@@ -16,7 +16,7 @@ class MassPlayblastLayFunc(anim_conglomeration_ui.AnimConglomerationUI):
         self.animcog_mpb_antialiasing_qpushbutton.clicked.connect(self.animcog_mpb_antialiasing_toggle_button_func)
         self.animcog_mpb_vp_combobox.activated.connect(self.animcog_mpb_vp_mode_func)
         self.animcog_mpb_playblast_qpushbutton.clicked.connect(self.animcog_mpb_playblast_button)
-        self.animcog_mpb_default_settings()
+        # self.animcog_mpb_default_settings()
 
     # CAVEAT : AnimConglomerationUI mass_playblast vp default settings
     def animcog_mpb_default_settings(self):
