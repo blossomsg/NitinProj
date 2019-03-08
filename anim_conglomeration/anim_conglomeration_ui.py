@@ -12,7 +12,7 @@ ptr_instance = wrapInstance(long(ptr), QtWidgets.QWidget)
 class AnimConglomerationUI(mass_playblast_lay.MassPlayblastLay):
     def __init__(self):
         super(AnimConglomerationUI, self).__init__()
-        # CAVEAT : Parent ui to the application through which the ui is being created
+        # CAVEAT : Parent the UI to the application Maya
         self.setParent(ptr_instance)
         self.setWindowFlags(QtCore.Qt.Window)
 
