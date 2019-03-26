@@ -16,22 +16,32 @@ class VaccumCleanerViewUI(QtWidgets.QWidget):
         self.setWindowFlags(QtCore.Qt.Window)
 
         # CAVEAT : Children wid's of Vacuum Cleaner, to list the techcheck names and the result
+        self.vacuum_cleaner_combobox_label = QtWidgets.QLabel("Project Name")
+        self.vacuum_cleaner_combobox_label.setFont(QtGui.QFont("Times", 10, QtGui.QFont.Bold))
+        self.vacuum_cleaner_combobox_label.setAlignment(QtCore.Qt.AlignRight)
         self.vacuum_cleaner_combobox = QtWidgets.QComboBox()
+        # self.vacuum_cleaner_combobox.setAlignment(QtCore.Qt.AlignCenter)
+        self.vacuum_cleaner_combobox.setMaximumSize(165, 30)
+        # self.vacuum_cleaner_combobox.setLayoutDirection(QtCore.Qt.RightToLeft)
+        # self.vacuum_cleaner_list_wid = QtWidgets.QListWidget()
         self.vacuum_cleaner_listview_wid = QtWidgets.QListWidget()
         self.vacuum_cleaner_textedit_wid = QtWidgets.QTextEdit()
         self.vacuum_cleaner_progressbar = QtWidgets.QProgressBar()
-        self.vacuum_cleaner_pushbutton = QtWidgets.QPushButton()
+        self.vacuum_cleaner_pushbutton = QtWidgets.QPushButton("Publish")
 
         # CAVEAT : Layout the children to keep them organized vertically
         self.vacuum_cleaner_parent_vertical_lay = QtWidgets.QVBoxLayout()
 
         # CAVEAT : Layout to keep list and textedit horizontally organized
         self.vacuum_cleaner_list_textedit_horizontal_lay = QtWidgets.QHBoxLayout()
+        self.vacuum_cleaner_combobox_label_horizontal_lay = QtWidgets.QHBoxLayout()
 
         # CAVEAT : Adding widgets to Vacuum Cleaner/ Connections
-        self.vacuum_cleaner_parent_vertical_lay.addWidget(self.vacuum_cleaner_combobox)
+        self.vacuum_cleaner_combobox_label_horizontal_lay.addWidget(self.vacuum_cleaner_combobox_label)
+        self.vacuum_cleaner_combobox_label_horizontal_lay.addWidget(self.vacuum_cleaner_combobox)
         self.vacuum_cleaner_list_textedit_horizontal_lay.addWidget(self.vacuum_cleaner_listview_wid)
         self.vacuum_cleaner_list_textedit_horizontal_lay.addWidget(self.vacuum_cleaner_textedit_wid)
+        self.vacuum_cleaner_parent_vertical_lay.addLayout(self.vacuum_cleaner_combobox_label_horizontal_lay)
         self.vacuum_cleaner_parent_vertical_lay.addLayout(self.vacuum_cleaner_list_textedit_horizontal_lay)
         self.vacuum_cleaner_parent_vertical_lay.addWidget(self.vacuum_cleaner_progressbar)
         self.vacuum_cleaner_parent_vertical_lay.addWidget(self.vacuum_cleaner_pushbutton)

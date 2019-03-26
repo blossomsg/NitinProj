@@ -4,7 +4,8 @@ import anim_conglomeration.mass_playblast_lay_func
 def main():
     """
     The main function is to run the code and exit on recalling the tool
-    Returns:None
+    Returns:
+        None
 
     """
     # CAVEAT: "win" var is global so that it can be used in multiple situations in the script

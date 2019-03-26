@@ -10,6 +10,17 @@ ptr_instance = wrapInstance(long(ptr), QtWidgets.QWidget)
 
 
 class AnimConglomerationUI(mass_playblast_lay.MassPlayblastLay):
+    """
+    This is the UI for storing small tools in it.
+
+    Importing tools as objects so that it can be stored in stacks(eg:Playblast).
+    It is already parented to the Maya3dPackage.
+    It is an independent UI.
+
+    Returns:
+        This is Main AnimConglomerationUI if __main__(imported directly)
+        This is AnimConglomerationUI if not __main__(import this via another application)
+    """
     def __init__(self):
         super(AnimConglomerationUI, self).__init__()
         # CAVEAT : Parent the UI to the application Maya
