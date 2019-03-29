@@ -8,9 +8,9 @@ ptr = omui.MQtUtil.mainWindow()
 ptr_instance = wrapInstance(long(ptr), QtWidgets.QWidget)
 
 
-class VaccumCleanerViewUI(QtWidgets.QWidget):
+class VacuumCleanerViewUI(QtWidgets.QWidget):
     def __init__(self):
-        super(VaccumCleanerViewUI, self).__init__()
+        super(VacuumCleanerViewUI, self).__init__()
         # CAVEAT : Parent the UI to the application Maya
         self.setParent(ptr_instance)
         self.setWindowFlags(QtCore.Qt.Window)
@@ -48,7 +48,7 @@ class VaccumCleanerViewUI(QtWidgets.QWidget):
 
         self.setLayout(self.vacuum_cleaner_parent_vertical_lay)
 
-        self.setWindowTitle("vaccum cleaner v1.0")
+        self.setWindowTitle("vacuum cleaner v1.0")
         # self.setWindowIcon("E:\\Proj_Codes\\NitinProj\\icons\\anim_conglomeration\\tool_logo\\molecule.png")
         # self.windowIcon("E:\\Proj_Codes\\NitinProj\\icons\\anim_conglomeration\\tool_logo\\molecule.png")
         # self.setFixedSize(250, 230)
