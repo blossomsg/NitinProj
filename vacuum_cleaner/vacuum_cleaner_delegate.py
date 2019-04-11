@@ -6,6 +6,7 @@ from shiboken2 import wrapInstance
 from vacuum_cleaner import vacuum_cleaner_view_ui
 import os
 import json
+import shutil
 import vacuum_cleaner.techcheck_func
 
 config_path = "E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\show_configs"
@@ -20,16 +21,18 @@ with open(os.path.join(techcheck_path, "default_techcheck.json"), "r") as config
 class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
     def __init__(self):
         super(VacuumCleanerDelegate, self).__init__()
-        # CAVEAT : Config files adding to the combobox
+        # CAVEAT : Config files adding to the combobox and selection
         self.vacuum_cleaner_combobox.addItems(config_files)
-
         self.vacuum_cleaner_combobox.activated.connect(self.vacuum_cleaner_combobox_config_func)
 
-        self.vacuum_cleaner_listview_wid.addItems(techcheck_func_dict.keys())
-        # self.vacuum_cleaner_listview_wid.itemClicked.connect(str(self.vacuum_cleaner_listview_wid.currentItem().text()), "apna time aagaya", techcheck_func_dict.get(self.vacuum_cleaner_listview_wid.currentItem().text()))
-        self.vacuum_cleaner_listview_wid.currentItemChanged.connect(self.print_someting)
+        # CAVEAT : Loading all the techcheck list(from a json file) in the listview and selection of techcheck in the view
+        self.vacuum_cleaner_listwid.addItems(techcheck_func_dict.keys())
+        self.vacuum_cleaner_listwid.currentItemChanged.connect(self.print_someting)
         # test_listwid.itemClicked.connect(lambda: text.setText((mydata[list.currentItem().text()])))
 
+        # CAVEAT : Progress bar already 100% (assuming as the scene is filled with dirt)
+        self.vacuum_cleaner_progressbar.setValue(100)
+        self.vacuum_cleaner_pushbutton.clicked.connect(self.vacuum_cleaner_progress_bar_process)
         # self.vacuum_cleaner_listview_wid.addItems(['anything_else_besides_polygon_in_the_scene','query_if_the_file_is_coming_from_right_path','name_of_the_camera_for_the_show'])
 
         # self.model = QtGui.QStringListModel(self.vacuum_cleaner_listview_wid)
@@ -59,9 +62,16 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
     #     return testing
 
     def print_someting(self):
-        print str(self.vacuum_cleaner_listview_wid.currentItem().text()), "apna time aagaya", techcheck_func_dict.get(self.vacuum_cleaner_listview_wid.currentItem().text())
-        self.vacuum_cleaner_textedit_wid.setText(str(techcheck_func_dict.get(self.vacuum_cleaner_listview_wid.currentItem().text())))
+        print str(self.vacuum_cleaner_listwid.currentItem().text()), "apna time aagaya", techcheck_func_dict.get(self.vacuum_cleaner_listwid.currentItem().text())
+        self.vacuum_cleaner_textedit_wid.setText(str(techcheck_func_dict.get(self.vacuum_cleaner_listwid.currentItem().text())))
 
+
+    def vacuum_cleaner_progress_bar_process(self):
+        self.vacuum_cleaner_progressbar.setValue(0)
+        self.vacuum_cleaner_publish_pushbutton.setEnabled(True)
+        src = "E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck.json"
+        dst = "E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json"
+        print "created an updated techcheck", shutil.copy(src, dst)
 
 
 
@@ -102,3 +112,17 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
 # with open(os.path.join(techcheck_path, "default_techcheck.json"), 'w') as f:
 #     f.write(json.dumps(listview_update))
 
+
+
+
+# How to create a close event and after closing the file delete the updated techcheck json
+# import os
+#
+#
+# def closeEvent(event):
+#     event.close()
+#     print "closed"
+#     os.remove("E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json")
+#
+#
+# closeEvent(test)
