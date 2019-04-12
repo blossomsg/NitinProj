@@ -33,6 +33,7 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
         # CAVEAT : Progress bar already 100% (assuming as the scene is filled with dirt)
         self.vacuum_cleaner_progressbar.setValue(100)
         self.vacuum_cleaner_pushbutton.clicked.connect(self.vacuum_cleaner_progress_bar_process)
+
         # self.vacuum_cleaner_listview_wid.addItems(['anything_else_besides_polygon_in_the_scene','query_if_the_file_is_coming_from_right_path','name_of_the_camera_for_the_show'])
 
         # self.model = QtGui.QStringListModel(self.vacuum_cleaner_listview_wid)
@@ -71,8 +72,15 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
         self.vacuum_cleaner_publish_pushbutton.setEnabled(True)
         src = "E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck.json"
         dst = "E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json"
-        print "created an updated techcheck", shutil.copy(src, dst)
+        shutil.copy(src, dst)
+        print "created an updated techcheck", dst
 
+
+    def closeEvent(self, event):
+        if os.path.isfile("E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json"):
+            os.remove("E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json")
+        else:
+            print "no updated techcheck file was created"
 
 
 
@@ -111,18 +119,3 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
 #
 # with open(os.path.join(techcheck_path, "default_techcheck.json"), 'w') as f:
 #     f.write(json.dumps(listview_update))
-
-
-
-
-# How to create a close event and after closing the file delete the updated techcheck json
-# import os
-#
-#
-# def closeEvent(event):
-#     event.close()
-#     print "closed"
-#     os.remove("E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json")
-#
-#
-# closeEvent(test)
