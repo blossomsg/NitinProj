@@ -7,6 +7,7 @@ from vacuum_cleaner import vacuum_cleaner_view_ui
 import os
 import json
 import shutil
+import maya.cmds as cmds
 import vacuum_cleaner.techcheck_func
 
 config_path = "E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\show_configs"
@@ -33,6 +34,10 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
         # CAVEAT : Progress bar already 100% (assuming as the scene is filled with dirt)
         self.vacuum_cleaner_progressbar.setValue(100)
         self.vacuum_cleaner_pushbutton.clicked.connect(self.vacuum_cleaner_progress_bar_process)
+
+        self.camera_exists(self.read_values_updated_techcheck_josn("Camera exists"))
+
+
 
         # self.vacuum_cleaner_listview_wid.addItems(['anything_else_besides_polygon_in_the_scene','query_if_the_file_is_coming_from_right_path','name_of_the_camera_for_the_show'])
 
@@ -62,6 +67,8 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
     #     testing = [str(x) for x in techcheck_func_dict.keys()]
     #     return testing
 
+
+
     def print_someting(self):
         print str(self.vacuum_cleaner_listwid.currentItem().text()), "apna time aagaya", techcheck_func_dict.get(self.vacuum_cleaner_listwid.currentItem().text())
         self.vacuum_cleaner_textedit_wid.setText(str(techcheck_func_dict.get(self.vacuum_cleaner_listwid.currentItem().text())))
@@ -75,47 +82,80 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
         shutil.copy(src, dst)
         print "created an updated techcheck", dst
 
+    def read_values_updated_techcheck_josn(self, select_techcheck):
+        with open(os.path.join(techcheck_path, "default_techcheck_updated.json"), "r") as config:
+            listview_update = json.load(config)
+            if select_techcheck in listview_update:
+                return select_techcheck
 
+
+    # def read_updated_techcheck_josn():
+    #     with open(os.path.join(techcheck_path, "default_techcheck_updated.json"), "r") as config:
+    #         listview_update_attr = json.load(config)
+    #         return listview_update_attr
+
+
+    def write_updated_techcheck_josn(self, var_name_with_new_values):
+        with open(os.path.join(techcheck_path, "default_techcheck_updated.json"), 'w') as f:
+            f.write(json.dumps(var_name_with_new_values))
+
+
+    def camera_exists(self, updated_techcheck_attr):
+        # listview_update_attr = read_updated_techcheck_josn()
+        camera_list = cmds.ls(type="camera")
+        if "renderCamShape" in camera_list:
+            techcheck_func_dict[updated_techcheck_attr] = "Camera exits in the scene with the right name - renderCamShape"
+            self.write_updated_techcheck_josn(techcheck_func_dict)
+            return "Camera exists in the scene with the right name - renderCamShape"
+        else:
+            techcheck_func_dict[
+                updated_techcheck_attr] = "Camera does not exists in the scene or the name of the camera is improper kindly rectify name with renderCamShape(name the transform node to camRender automatically will rename the shapenode)"
+            self.write_updated_techcheck_josn(techcheck_func_dict)
+            return "Camera does not exists in the scene or the name of the camera is improper kindly rectify name with renderCamShape(name the transform node to camRender automatically will rename the shapenode)"
+
+
+    # CAVEAT : When the window is closed(X-cross red button) it will return certain values
     def closeEvent(self, event):
         if os.path.isfile("E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json"):
             os.remove("E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json")
+            print "deleted updated techcheck file"
         else:
             print "no updated techcheck file was created"
 
-
-
-
-
-
-
-# this the setup to write the update updated_techcheck.json
-# import maya.cmds as cmds
+# Read and write updated techcheck json to update the values
 # import json
 #
-# config_path = "E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\show_configs"
-# config_files = os.listdir(config_path)
-# techcheck_path = "E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func"
+#
+# def read_values_updated_techcheck_josn(select_techcheck):
+#     with open(os.path.join(techcheck_path, "default_techcheck_updated.json"), "r") as config:
+#         listview_update = json.load(config)
+#         if select_techcheck in listview_update:
+#             return select_techcheck
 #
 #
-#
-# with open(os.path.join(config_path, "dumplings.json"), "r") as config:
-#     techcheck_func_dict = json.load(config)
-# testing = [str(x) for x in techcheck_func_dict.keys()]
-#
-# with open(os.path.join(techcheck_path, "default_techcheck.json"), "r") as config:
-#     listview_update = json.load(config)
+# def read_updated_techcheck_josn():
+#     with open(os.path.join(techcheck_path, "default_techcheck_updated.json"), "r") as config:
+#         listview_update_attr = json.load(config)
+#         return listview_update_attr
 #
 #
-# def camera_exits(config_file_camera_attribute):
+# def write_updated_techcheck_josn(var_name_with_new_values):
+#     with open(os.path.join(techcheck_path, "default_techcheck_updated.json"), 'w') as f:
+#         f.write(json.dumps(var_name_with_new_values))
+#
+#
+# def camera_exists(updated_techcheck_attr):
+#     listview_update_attr = read_updated_techcheck_josn()
 #     camera_list = cmds.ls(type="camera")
-#     if config_file_camera_attribute in camera_list:
+#     if "renderCamShape" in camera_list:
+#         listview_update_attr[updated_techcheck_attr] = "Camera exits in the scene with the right name - renderCamShape"
+#         write_updated_techcheck_josn(listview_update_attr)
 #         return "Camera exists in the scene with the right name - renderCamShape"
 #     else:
+#         listview_update_attr[
+#             updated_techcheck_attr] = "Camera does not exists in the scene or the name of the camera is improper kindly rectify name with renderCamShape(name the transform node to camRender automatically will rename the shapenode)"
+#         write_updated_techcheck_josn(listview_update_attr)
 #         return "Camera does not exists in the scene or the name of the camera is improper kindly rectify name with renderCamShape(name the transform node to camRender automatically will rename the shapenode)"
 #
-# #camera_exits(techcheck_func_dict["camera_name"])
 #
-# listview_update["Camera exists"] = "Camera exits in the scene with the right name - renderCamShape"
-#
-# with open(os.path.join(techcheck_path, "default_techcheck.json"), 'w') as f:
-#     f.write(json.dumps(listview_update))
+# camera_exists(read_values_updated_techcheck_josn("Camera exists"))
