@@ -33,9 +33,9 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
 
         # CAVEAT : Progress bar already 100% (assuming as the scene is filled with dirt)
         self.vacuum_cleaner_progressbar.setValue(100)
-        self.vacuum_cleaner_pushbutton.clicked.connect(self.vacuum_cleaner_progress_bar_process)
+        self.vacuum_cleaner_pushbutton.clicked.connect(self.vacuum_cleaner_setup)
 
-        self.camera_exists(self.read_values_updated_techcheck_josn("Camera exists"))
+
 
 
 
@@ -74,19 +74,24 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
         self.vacuum_cleaner_textedit_wid.setText(str(techcheck_func_dict.get(self.vacuum_cleaner_listwid.currentItem().text())))
 
 
-    def vacuum_cleaner_progress_bar_process(self):
+    def vacuum_cleaner_setup(self):
         self.vacuum_cleaner_progressbar.setValue(0)
         self.vacuum_cleaner_publish_pushbutton.setEnabled(True)
         src = "E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck.json"
         dst = "E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json"
         shutil.copy(src, dst)
+        self.camera_exists(self.read_values_updated_techcheck_josn("Camera exists"))
+        with open(os.path.join(techcheck_path, "default_techcheck_updated.json"), "r"):
+            techcheck_func_dic = json.load(config)
+        self.vacuum_cleaner_listwid.addItems(techcheck_func_dic.keys())
+        # self.vacuum_cleaner_listwid.currentItemChanged.connect(self.print_someting)
+
         print "created an updated techcheck", dst
 
-    def read_values_updated_techcheck_josn(self, select_techcheck):
-        with open(os.path.join(techcheck_path, "default_techcheck_updated.json"), "r") as config:
-            listview_update = json.load(config)
-            if select_techcheck in listview_update:
-                return select_techcheck
+    def read_values_updated_techcheck_josn(self, select_techcheck_attr):
+        listview_update = techcheck_func_dict
+        if select_techcheck_attr in listview_update:
+            return select_techcheck_attr
 
 
     # def read_updated_techcheck_josn():
@@ -96,27 +101,30 @@ class VacuumCleanerDelegate(vacuum_cleaner_view_ui.VacuumCleanerViewUI):
 
 
     def write_updated_techcheck_josn(self, var_name_with_new_values):
-        with open(os.path.join(techcheck_path, "default_techcheck_updated.json"), 'w') as f:
-            f.write(json.dumps(var_name_with_new_values))
+        updated_path = open(os.path.join(techcheck_path, "default_techcheck_updated.json"), 'w')
+        updated_path.write(json.dumps(var_name_with_new_values))
 
 
     def camera_exists(self, updated_techcheck_attr):
         # listview_update_attr = read_updated_techcheck_josn()
         camera_list = cmds.ls(type="camera")
+        print camera_list
         if "renderCamShape" in camera_list:
             techcheck_func_dict[updated_techcheck_attr] = "Camera exits in the scene with the right name - renderCamShape"
             self.write_updated_techcheck_josn(techcheck_func_dict)
-            return "Camera exists in the scene with the right name - renderCamShape"
+            print "Camera exists in the scene with the right name - renderCamShape"
         else:
             techcheck_func_dict[
                 updated_techcheck_attr] = "Camera does not exists in the scene or the name of the camera is improper kindly rectify name with renderCamShape(name the transform node to camRender automatically will rename the shapenode)"
             self.write_updated_techcheck_josn(techcheck_func_dict)
-            return "Camera does not exists in the scene or the name of the camera is improper kindly rectify name with renderCamShape(name the transform node to camRender automatically will rename the shapenode)"
+            print "Camera does not exists in the scene or the name of the camera is improper kindly rectify name with renderCamShape(name the transform node to camRender automatically will rename the shapenode)"
 
 
     # CAVEAT : When the window is closed(X-cross red button) it will return certain values
     def closeEvent(self, event):
+        # updated_path = open("E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json")
         if os.path.isfile("E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json"):
+            # updated_path.close()
             os.remove("E:\\Proj_Codes\\NitinProj\\vacuum_cleaner\\techcheck_func\\default_techcheck_updated.json")
             print "deleted updated techcheck file"
         else:
