@@ -34,7 +34,7 @@ class VacuumCleanerViewUI(QtWidgets.QWidget):
         self.vacuum_cleaner_list_textedit_horizontal_lay = QtWidgets.QHBoxLayout()
         self.vacuum_cleaner_combobox_label_horizontal_lay = QtWidgets.QHBoxLayout()
 
-        # CAVEAT : Adding widgets to Vacuum Cleaner/ Connections
+        # CAVEAT : Adding widgets to Vacuum Cleaner/ Connections/ position widget/ setting layout
         self.vacuum_cleaner_combobox_label_horizontal_lay.addWidget(self.vacuum_cleaner_combobox_label)
         self.vacuum_cleaner_combobox_label_horizontal_lay.addWidget(self.vacuum_cleaner_combobox)
         self.vacuum_cleaner_list_textedit_horizontal_lay.addWidget(self.vacuum_cleaner_listwid)
@@ -44,7 +44,7 @@ class VacuumCleanerViewUI(QtWidgets.QWidget):
         self.vacuum_cleaner_parent_vertical_lay.addWidget(self.vacuum_cleaner_progressbar)
         self.vacuum_cleaner_parent_vertical_lay.addWidget(self.vacuum_cleaner_pushbutton)
         self.vacuum_cleaner_parent_vertical_lay.addWidget(self.vacuum_cleaner_publish_pushbutton)
-
+        self.move(QtCore.QPoint(500, 200))
         self.setLayout(self.vacuum_cleaner_parent_vertical_lay)
 
         self.setWindowTitle("vacuum cleaner v1.0")
